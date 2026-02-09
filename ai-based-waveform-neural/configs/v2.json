@@ -1,0 +1,73 @@
+{
+  "signal": {
+    "n_fft": 64,
+    "cp_len": 16,
+    "n_ofdm_symbols": 8,
+    "active_subcarriers": 16,
+    "ook_sps": 8,
+    "ofdm_carrier_freq": 0.18,
+    "ook_carrier_freq": 0.06
+  },
+  "model": {
+    "router_hidden": 64,
+    "router_residual_scale": 0.2,
+    "min_expert_weight": 0.2,
+    "fusion_hidden": 64,
+    "receiver_channels": 48,
+    "receiver_hidden": 384
+  },
+  "train": {
+    "seed": 42,
+    "device": "auto",
+    "batch_size": 64,
+    "epochs": 50,
+    "steps_per_epoch": 200,
+    "warmup_epochs": 6,
+    "lr": 0.001,
+    "weight_decay": 1e-05,
+    "grad_clip_norm": 1.0,
+    "snr_min_db": -5.0,
+    "snr_max_db": 20.0,
+    "curriculum_epochs": 10,
+    "curriculum_high_snr_min_db": 12.0,
+    "lambda_router_balance": 0.01,
+    "lambda_router_prior": 0.05,
+    "router_prior_center_db": 6.0,
+    "router_prior_temp_db": 4.0,
+    "early_stop_patience": 10,
+    "val_steps": 40,
+    "target_ber": 0.001
+  },
+  "v2": {
+    "use_v2_fusion": true,
+    "fusion_operator_hidden": 64,
+    "lambda_gate_tv": 0.01,
+    "lambda_res_energy": 0.01,
+    "lambda_alpha_uniform": 0.01,
+    "lambda_alpha_tv": 0.005,
+    "lambda_oob": 0.05,
+    "spectral_mask_db": -25.0,
+    "occupied_bw_power_frac": 0.99,
+    "lambda_papr": 0.01,
+    "papr_target_db": 8.0,
+    "papr_calibration_batches": 300,
+    "papr_calibration_quantile": 0.7,
+    "papr_target_margin_db": 0.3,
+    "papr_target_min_db": 4.0,
+    "papr_target_max_db": 8.0,
+    "residual_gain_init": 0.1,
+    "include_snr_in_fusion": true
+  },
+  "eval": {
+    "snr_grid_db": [
+      -5.0,
+      0.0,
+      5.0,
+      10.0,
+      15.0,
+      20.0
+    ],
+    "eval_batches": 60,
+    "batch_size": 128
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "signal": {
+    "n_fft": 64,
+    "cp_len": 16,
+    "n_ofdm_symbols": 8,
+    "active_subcarriers": 16,
+    "ook_sps": 8,
+    "ofdm_carrier_freq": 0.18,
+    "ook_carrier_freq": 0.06
+  },
+  "model": {
+    "router_hidden": 64,
+    "router_residual_scale": 0.2,
+    "min_expert_weight": 0.2,
+    "fusion_hidden": 64,
+    "receiver_channels": 48,
+    "receiver_hidden": 384
+  },
+  "train": {
+    "seed": 42,
+    "device": "cpu",
+    "batch_size": 64,
+    "epochs": 50,
+    "steps_per_epoch": 200,
+    "warmup_epochs": 6,
+    "lr": 0.001,
+    "weight_decay": 1e-05,
+    "grad_clip_norm": 1.0,
+    "snr_min_db": -5.0,
+    "snr_max_db": 20.0,
+    "curriculum_epochs": 10,
+    "curriculum_high_snr_min_db": 12.0,
+    "lambda_router_balance": 0.01,
+    "lambda_router_prior": 0.05,
+    "router_prior_center_db": 6.0,
+    "router_prior_temp_db": 4.0,
+    "early_stop_patience": 10,
+    "val_steps": 40,
+    "target_ber": 0.001
+  },
+  "eval": {
+    "snr_grid_db": [
+      -5.0,
+      0.0,
+      5.0,
+      10.0,
+      15.0,
+      20.0
+    ],
+    "eval_batches": 60,
+    "batch_size": 128
+  }
+}
